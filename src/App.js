@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     // getData('http://localhost:5000/productData');
-     getCartData("http://localhost:5000/cartItems");
+     getCartData("http://localhost:3000/cartItems");
 
     const is_Login = localStorage.getItem('isLogin');
     setIsLogin(is_Login);
@@ -70,7 +70,7 @@ function App() {
     item.quantity = 1;
 
     try {
-      await axios.post("http://localhost:5000/cartItems", item).then((res) => {
+      await axios.post("http://localhost:3000/cartItems", item).then((res) => {
         if (res !== undefined) {
           setCartItems([...cartItems, { ...item, quantity: 1 }])
         }
@@ -85,9 +85,9 @@ function App() {
 
 
   const removeItemsFromCart = async(id) => {
-    const response = await axios.delete(`http://localhost:5000/cartItems/${id}`);
+    const response = await axios.delete(`http://localhost:3000/cartItems/${id}`);
     if (response !== null) {
-        getCartData("http://localhost:5000/cartItems");
+        getCartData("http://localhost:3000/cartItems");
     }
   }
 
